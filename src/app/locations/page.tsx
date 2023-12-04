@@ -8,7 +8,7 @@ export const metadata = {
 };
 export default function Location() {
   return (
-    <div className="mt-20 bg-orange-50">
+    <main>
       <div className="flex  w-full flex-col    lg:flex-row-reverse">
         <div className="w-full lg:w-6/12">
           <Image
@@ -131,6 +131,6 @@ export default function Location() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

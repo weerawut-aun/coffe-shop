@@ -1,6 +1,7 @@
 "use client";
+import Image from "next/image";
 import React, { ComponentProps } from "react";
-
+import ShopPay from "@/assets/shoppay.png";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 
 type ButtonGlobalProps = {
@@ -45,3 +46,16 @@ export function FormSubmitButton({
     </button>
   );
 }
+
+type ButtonPayProps = {
+  children: React.ReactNode;
+  className?: string;
+};
+
+export const ButtonPay = ({ children, className }: ButtonPayProps) => (
+  <button
+    className={`flex items-center justify-center rounded-md ${className}`}
+  >
+    {children}
+  </button>
+);

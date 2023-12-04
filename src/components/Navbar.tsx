@@ -17,7 +17,7 @@ export default function Navbar() {
     <header>
       <div className="relative top-0  w-full bg-black text-white">
         {/* CONTAINER Nav */}
-        <nav className="relative flex  items-center p-2 pt-14 md:bg-red-50 ">
+        <nav className="relative flex  items-center p-2 py-5 md:bg-red-50 ">
           {/* left Nav */}
           <div className="flex items-center justify-center gap-3 md:hidden">
             {/* <ToggleButton /> */}

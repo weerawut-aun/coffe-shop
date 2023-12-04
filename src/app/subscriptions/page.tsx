@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function Subscription() {
   return (
-    <main className="mt-20 bg-orange-50">
+    <main>
       <section className="grid grid-flow-row md:grid-cols-2">
         <div className="relative md:order-2">
           <Image src={Hero2} alt="barner" width={1600} height={1067} priority />

@@ -3,15 +3,18 @@
 import { AiOutlineClose, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { BiCart } from "react-icons/bi";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import ButtonGlobal from "./ButtonGlobal";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { formatPrice } from "@/lib/format";
 import { useCartStore } from "@/lib/store";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export function CartButton() {
   const [sideCart, setSideCart] = useState(false);
+  const { data: session } = useSession();
+  const router = useRouter();
 
   const {
     products,
@@ -25,6 +28,25 @@ export function CartButton() {
   useEffect(() => {
     useCartStore.persist.rehydrate();
   }, []);
+
+  const handleCheckout = async () => {
+    try {
+      const res = await fetch(`http://localhost:3000/api/orders`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          price: totalPrice,
+          products,
+          status: "Not paid!",
+          userEmail: session?.user.email,
+        }),
+      });
+      const data = await res.json();
+      router.push(`/pay/${data.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="relative  text-black">
@@ -158,7 +180,12 @@ export function CartButton() {
               </p>
             </div>
             <div className="mt-8 flex">
-              <ButtonGlobal className="block w-full">Check out</ButtonGlobal>
+              <button
+                className="block w-full rounded-sm bg-black px-9 py-3 text-sm uppercase text-white hover:border-2  hover:border-solid hover:border-black hover:bg-white hover:text-black"
+                onClick={handleCheckout}
+              >
+                Check out
+              </button>
             </div>
           </div>
         )}

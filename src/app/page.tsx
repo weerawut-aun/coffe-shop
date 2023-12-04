@@ -1,7 +1,7 @@
 import ButtonGlobal from "@/components/ButtonGlobal";
 
 import { Article } from "@/components/Article";
-import Category from "./Content/Category";
+import Category from "../components/Category";
 import Image from "next/image";
 import Slider from "@/components/Slider";
 import SliderMoblie from "@/components/SliderMoblie";
@@ -53,7 +53,7 @@ export default function Home() {
       <div className="bg-sky-200 px-5 py-10">
         <Category />
       </div>
-      <div>{/* <Sponsor /> */}</div>
+
       <section className="  w-full [&>*:nth-child(1)]:mb-12 [&>*:nth-child(1)]:bg-teal-500  [&>*:nth-child(2)]:mb-12 [&>*:nth-child(2)]:bg-amber-500 [&>*:nth-child(3)]:bg-slate-300">
         <div className="px-6 py-12 lg:px-14 lg:py-20">
           <Article />

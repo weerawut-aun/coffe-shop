@@ -1,5 +1,5 @@
 import SliderMoblie from "@/components/SliderMoblie";
-import ButtonGlobal from "../../components/ButtonGlobal";
+import ButtonGlobal from "./ButtonGlobal";
 import Slider from "@/components/Slider";
 
 export default async function Featured() {

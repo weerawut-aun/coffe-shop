@@ -2,7 +2,7 @@ import Image from "next/image";
 import ButtonGlobal from "@/components/ButtonGlobal";
 export default function Category() {
   return (
-    <div className="flex flex-col items-center gap-12">
+    <section className="flex flex-col items-center gap-12">
       <div className="flex w-5/6 flex-col  gap-10">
         <h2 className="text-center text-2xl">FIND YOUR PERFECT SUBSCRIPTION</h2>
         <p className="text-center">
@@ -69,6 +69,6 @@ export default function Category() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
