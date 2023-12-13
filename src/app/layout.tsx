@@ -6,8 +6,8 @@ import Notificated from "../components/Notificated";
 
 import Footer from "../components/Footer";
 import Navbar from "@/components/Navbar";
-import AuthProvider from "@/components/AuthProvider";
-import QueryProvider from "@/components/QueryProvider";
+import AuthProvider from "@/components/provider/AuthProvider";
+import QueryProvider from "@/components/provider/QueryProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 const nunito = Nunito({

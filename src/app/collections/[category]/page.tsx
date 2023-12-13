@@ -1,26 +1,6 @@
-import { ProductType } from "@/app/types/types";
 import AddButton from "@/components/AddButton";
-import CardProduct from "@/components/CardProduct";
+import ListProduct from "@/components/ListProduct";
 import Menu from "@/components/Menu";
-
-const getData = async (category: string) => {
-  try {
-    const res = await fetch(
-      `http://localhost:3000/api/products?cat=${category}`,
-      {
-        method: "GET",
-        cache: "no-store",
-      }
-    );
-    if (!res.ok) {
-      throw new Error("Faild!");
-    }
-
-    return res.json();
-  } catch (err) {
-    console.log(err);
-  }
-};
 
 type Props = {
   params: { category: string };
@@ -32,8 +12,7 @@ export async function generateMetadata({ params: { category } }: Props) {
   };
 }
 
-const CategoryPage = async ({ params }: Props) => {
-  const products: ProductType[] = await getData(params.category);
+const CategoryPage = ({ params }: Props) => {
   // const productTotalCount = products.length;
 
   return (
@@ -49,13 +28,7 @@ const CategoryPage = async ({ params }: Props) => {
         <Menu />
       </div>
       <div className="w-full px-7 md:px-10">
-        <ul className="grid grid-cols-2 lg:grid-cols-3 ">
-          {products?.map((product) => (
-            <li key={product.id}>
-              <CardProduct product={product} />
-            </li>
-          ))}
-        </ul>
+        <ListProduct category={params.category} />
       </div>
     </main>
   );

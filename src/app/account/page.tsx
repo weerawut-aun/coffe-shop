@@ -1,5 +1,6 @@
 "use client";
 
+import Order from "@/components/Order";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -30,8 +31,7 @@ const AccountPage = () => {
       </div>
       <div className="flex flex-col md:flex-row md:justify-between">
         <div>
-          <h1 className="my-4 text-2xl uppercase">Order History</h1>
-          <p className="text-sm">You haven`t placed any orders yet.</p>
+          <Order />
         </div>
         <div>
           <h1 className="my-4 text-2xl uppercase">Account Destails</h1>
