@@ -14,6 +14,13 @@ export type ProductType = {
   goods?: { type: string[]; description: string[]; features: string[] }[];
 };
 
+export type CoffeeType = {
+  roast: number;
+  ingredient: string[];
+  types: string;
+  description: string[];
+};
+
 export type OrderType = {
   id: string;
   userEmail: string;
@@ -45,4 +52,15 @@ export type ActionTypes = {
   increaseQuantity: (item: CartItemType) => void;
   decreaseQuantity: (item: CartItemType) => void;
   reset: () => void;
+};
+
+export type Location = {
+  id: number;
+  name: string;
+  addess: string;
+  city: string;
+  state?: string;
+  office_hours: string;
+  phone: string;
+  imgUrl: string;
 };

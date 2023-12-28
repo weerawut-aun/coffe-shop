@@ -14,7 +14,7 @@ export default function CardProduct({ product }: CardProductProps) {
   return (
     <>
       <div className="relative flex h-auto w-[35vh] items-center justify-center bg-slate-200  md:h-[60vh] md:w-[50vh] ">
-        <Link href={`/product/${product.id}`}>
+        <Link href={`/collections/${product.catSlug}/product/${product.id}`}>
           {product.imageUrl && (
             <Image
               src={product.imageUrl}

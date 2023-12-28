@@ -52,8 +52,8 @@ export default async function ProductsPage({
       <div className="flex flex-col pb-4 lg:flex-row lg:justify-center lg:gap-4">
         {/* Pre-Product */}
         <div className="flex flex-col lg:order-2 lg:w-5/12 ">
-          <h2 className="mb-7 px-10 pt-5 text-sm uppercase">
-            <Link href={`/`}>Home</Link>/ {product.name}
+          <h2 className="mb-7 flex gap-2 px-10 pt-5 text-sm uppercase">
+            <PathName category={product.catSlug} />
           </h2>
           <div className="relative flex justify-between">
             <div>

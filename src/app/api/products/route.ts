@@ -11,12 +11,38 @@ export async function GET(req: NextRequest) {
         catSlug: cat!,
       },
       include: {
-        coffee: true,
+        coffee: {
+          select: {
+            roast: true,
+            ingredient: true,
+            types: true,
+            description: true,
+          },
+        },
       },
     });
-    return new NextResponse(JSON.stringify(products), {
-      status: 200,
-    });
+    if (products) {
+      return new NextResponse(JSON.stringify(products), {
+        status: 200,
+      });
+    } else {
+      const products = await prisma.product.findMany({
+        where: {
+          catSlug: cat!,
+        },
+        include: {
+          goods: {
+            select: {
+              type: true,
+              description: true,
+              features: true,
+            },
+          },
+        },
+      });
+
+      return new NextResponse(JSON.stringify(products), { status: 200 });
+    }
   } catch (err) {
     console.log(err);
 

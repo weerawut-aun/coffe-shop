@@ -1,3 +1,5 @@
+import { ProductType } from "./app/types/types";
+
 export const links = [
   { id: 1, title: "Coffee", url: "/collections/all-coffee" },
   { id: 2, title: "Location", url: "/locations/" },
@@ -400,5 +402,76 @@ export const Carts: CartType[] = [
     imageUrl:
       "https://cdn.shopify.com/s/files/1/0035/9372/products/Orangestack1_720x.png?v=1679625947",
     price: 1500,
+  },
+];
+
+export const ProductData: ProductType[] = [
+  {
+    id: "654d99e9f16495eb0f23c6ec",
+    name: "holiday blend",
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/files/HolidayBlend_October_2023.png?v=1696544871",
+    price: 2200,
+    title: "",
+    catSlug: "all-coffee",
+    coffee: [
+      {
+        roast: 5,
+        ingredient: ["orange zest", "honey  wine", "pluot"],
+        types: "seasonal Blend",
+        description: [],
+      },
+    ],
+  },
+  {
+    id: "654d9d7ff16495eb0f23c6ee",
+    name: "holiday blend craft instant coffee",
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/files/HolidayCraftInstant_October_2023.png?v=1696544883",
+    price: 1800,
+    title: "",
+    catSlug: "all-coffee",
+    coffee: [
+      {
+        roast: 5,
+        ingredient: ["pluot", "orange zear", "honey  wine"],
+        types: "Blend",
+        description: [],
+      },
+    ],
+  },
+  {
+    id: "654da282f16495eb0f23c6f0",
+    name: "hoilday seasonal blend coffee set",
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/files/HolidaySet_October_2023.png?v=1696544892",
+    price: 3600,
+    title: "",
+    catSlug: "all-coffee",
+    coffee: [
+      {
+        roast: 5,
+        ingredient: ["pluot", "orange zear", "honey  wine"],
+        types: "seasonal Blend",
+        description: [],
+      },
+    ],
+  },
+  {
+    id: "654dede86fcc72012b630047",
+    name: "yojoa",
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/files/Yojoa_August_2023.png?v=1689796495",
+    price: 2050,
+    title: "",
+    catSlug: "all-coffee",
+    coffee: [
+      {
+        roast: 4,
+        ingredient: ["apricot", "re", "caramel"],
+        types: "SINGLE ORIGIN - HONDURAS",
+        description: [],
+      },
+    ],
   },
 ];

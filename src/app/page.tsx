@@ -38,9 +38,9 @@ export default function Home() {
               These September coffees are brimming with fruity notes and
               colorful aromas.
             </p>
-            <ButtonGlobal>
-              <Link href={`/new-arrivals`}>shop new coffees</Link>
-            </ButtonGlobal>
+            <Link href={`/new-arrivals`}>
+              <ButtonGlobal>shop new coffees</ButtonGlobal>
+            </Link>
           </div>
 
           <div className="relative w-full flex-1 pl-8 lg:flex lg:w-7/12 lg:flex-col lg:justify-center lg:pl-2">

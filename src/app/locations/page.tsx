@@ -1,5 +1,7 @@
 import ButtonGlobal from "@/components/ButtonGlobal";
-import ListLocation from "@/components/ListLocation";
+import HeroGobal from "@/components/ui/HeroGobal";
+import Hero from "@/components/ui/locations/Hero";
+import ListLocation from "@/components/ui/locations/ListLocation";
 
 import Image from "next/image";
 
@@ -10,72 +12,20 @@ export default function Location() {
   return (
     <main>
       <div className="flex  w-full flex-col    lg:flex-row-reverse">
-        <div className="w-full lg:w-6/12">
-          <Image
-            src={`https:///www.vervecoffee.com/cdn/shop/files/IMG_2389_1500x.jpg?v=1672442091`}
-            alt="barner"
-            width={400}
-            height={400}
-            className="h-full w-full object-cover"
-            priority
-          />
-        </div>
-        <div className="w-full bg-slate-100 p-16  lg:w-6/12">
-          <div className="flex flex-col items-center justify-center gap-2 text-center lg:items-start lg:px-0 lg:py-10">
-            <h1 className="lg:md-4 mb-2 text-4xl font-light uppercase lg:text-5xl ">
-              verve near you
-            </h1>
-            <p className="my-2 w-full text-sm lg:w-96 lg:text-start lg:text-lg">
-              If you are not near one of our cafas, use the map at the bottom of
-              this page to search for coffee,instant,and flash brew products
-              sold at our retail partnear nationwide.
-            </p>
-          </div>
-        </div>
+        <Hero />
       </div>
       <div>
         <div className="flex flex-col py-20">
-          {/* locations tap menu */}
-          <div className="mb-10 flex flex-col">
-            <h2 className="pb-8 text-center text-4xl uppercase md:pb-5 md:text-3xl">
-              verve cafes
-            </h2>
-            <ul className="flex w-full justify-center gap-2 uppercase md:gap-6 md:text-sm">
-              <li>los angeles</li>
-              <li>palo alto</li>
-              <li>san francico</li>
-              <li>santa cruz</li>
-              <li>japan</li>
-            </ul>
-          </div>
           {/* shopify-template */}
           <ListLocation />
           {/* Banner 2 */}
-          <div className="flex  w-full flex-col  lg:w-screen  lg:flex-row-reverse">
-            <div className="w-full lg:w-6/12">
-              <Image
-                src={`https://www.vervecoffee.com/cdn/shop/files/kevin_1_1500x.jpg?v=1613665155`}
-                alt="barner"
-                width={400}
-                height={400}
-                className="h-full w-full object-cover"
-                priority
-              />
-            </div>
-            <div className="w-full bg-slate-100 p-16  lg:w-6/12">
-              <div className="flex flex-col items-center justify-center gap-2 text-center lg:items-start lg:px-0 lg:py-10">
-                <h1 className="lg:md-4 mb-2 text-4xl font-light uppercase lg:text-5xl ">
-                  We make Days!
-                </h1>
-                <p className="my-2 w-full text-sm lg:w-96 lg:text-start lg:text-lg">
-                  Join us in crafting the future of coffee.
-                </p>
-                <ButtonGlobal className="block uppercase">
-                  Learn More
-                </ButtonGlobal>
-              </div>
-            </div>
-          </div>
+          <HeroGobal
+            bgColor="bg-slate-100"
+            title="  We make Days!"
+            desc="  Join us in crafting the future of coffee."
+            textButton="Learn More"
+            refImage="https://www.vervecoffee.com/cdn/shop/files/kevin_1_1500x.jpg?v=1613665155"
+          />
           {/* search location */}
           <div className="  my-20 px-6 text-4xl font-light uppercase md:mx-20 md:mb-10 md:px-6 md:text-3xl">
             <div className="flex flex-col items-center justify-center bg-neutral-300">
