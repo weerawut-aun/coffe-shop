@@ -10,12 +10,21 @@ import { BiUser } from "react-icons/bi";
 
 import { useSession } from "next-auth/react";
 import MenuItem from "./MenuItem";
+import { noHeaderFooter } from "@/data";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const { data: session } = useSession();
+  const pathName = usePathname();
+  const newPathName = pathName.split("/").splice(1, 1).toString();
+
   return (
     <header>
-      <div className="relative top-0  w-full bg-black text-white">
+      <div
+        className={`relative top-0  w-full bg-black text-white ${
+          noHeaderFooter.includes(newPathName) && "hidden"
+        }`}
+      >
         {/* CONTAINER Nav */}
         <nav className="relative flex  items-center p-2 py-5 md:bg-red-50 ">
           {/* left Nav */}

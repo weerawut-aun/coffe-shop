@@ -3,14 +3,15 @@ import ButtonGlobal from "@/components/ButtonGlobal";
 import { Article } from "@/components/Article";
 import Category from "../components/Category";
 import Image from "next/image";
-import Slider from "@/components/Slider";
-import SliderMoblie from "@/components/SliderMoblie";
+import Slider from "@/components/ui/home/Slider";
+import SliderMoblie from "@/components/ui/home/SliderMoblie";
 import Hero1 from "@/assets/Hero/hero1.png";
 import Link from "next/link";
+import Featured from "@/components/ui/home/Featured";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <section className="grid grid-flow-row lg:grid-cols-2 ">
         <div className="relative lg:order-2">
           <Image src={Hero1} height={1960} width={2940} alt="image" priority />
@@ -28,7 +29,8 @@ export default function Home() {
         </div>
       </section>
       {/* Featured  */}
-      <section className="relative ">
+      <Featured />
+      {/* <section className="relative ">
         <div className="flex flex-col items-center justify-center gap-10 py-14 pr-12 lg:flex-row lg:gap-0 lg:pr-20">
           <div className="flex flex-1 flex-col items-start  pl-10 pr-20 lg:w-5/12 lg:px-40">
             <h2 className="mb-5 text-2xl font-light uppercase">
@@ -48,7 +50,7 @@ export default function Home() {
             <SliderMoblie />
           </div>
         </div>
-      </section>
+      </section> */}
       {/* Type Product */}
       <div className="bg-sky-200 px-5 py-10">
         <Category />
@@ -65,6 +67,6 @@ export default function Home() {
           <Article />
         </div>
       </section>
-    </main>
+    </>
   );
 }

@@ -1,6 +1,6 @@
 import { ProductType } from "@/app/types/types";
 import AddButton from "@/components/AddButton";
-import Menu from "@/components/ui/product/Menu";
+
 import ListProduct from "@/components/ui/product/ListProduct";
 
 type Props = {
@@ -48,7 +48,6 @@ export async function generateMetadata({ params: { category } }: Props) {
 }
 
 const CategoryPage = async ({ params }: Props) => {
-  // const productTotalCount = products.length;
   const products: ProductType[] = await getProduct(params.category);
   const categories: [] = await getCategory();
 
@@ -64,11 +63,7 @@ const CategoryPage = async ({ params }: Props) => {
         </div>
 
         <div className="w-full px-7 md:px-10">
-          <ListProduct
-            category={params.category}
-            products={products}
-            filterCat={categories}
-          />
+          <ListProduct categories={categories} products={products} />
         </div>
       </div>
     </main>

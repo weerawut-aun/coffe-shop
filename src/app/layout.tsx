@@ -8,6 +8,8 @@ import Footer from "../components/Footer";
 import Navbar from "@/components/Navbar";
 import AuthProvider from "@/lib/provider/AuthProvider";
 import QueryProvider from "@/lib/provider/QueryProvider";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const inter = Inter({ subsets: ["latin"] });
 const nunito = Nunito({

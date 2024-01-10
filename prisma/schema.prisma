@@ -14,8 +14,8 @@ model Product {
   price     Int
   catSlug   String
   category  Category   @relation(fields: [catSlug], references: [slug])
-  coffee    Coffee[]
-  goods     Good[]
+  coffee    Coffee?
+  goods     Good?
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   CartItem  CartItem[]
@@ -39,7 +39,7 @@ model Coffee {
   types       String?
   ingredient  Json[]
   description Json[]
-  productId   String  @db.ObjectId
+  productId   String   @unique @db.ObjectId
   product     Product @relation(fields: [productId], references: [id])
 
   @@map("coffee")
@@ -50,7 +50,7 @@ model Good {
   type        Json[]
   description Json[]
   features    Json[]
-  productId   String  @db.ObjectId
+  productId   String   @unique @db.ObjectId
   product     Product @relation(fields: [productId], references: [id])
 
   @@map("goods")

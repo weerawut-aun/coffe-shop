@@ -1,3 +1,4 @@
+"use client";
 import FormSubmitButton from "./FormSubmitButton";
 import { PiInstagramLogoFill } from "react-icons/pi";
 import { BiLogoFacebook, BiLogoPinterest, BiLogoVimeo } from "react-icons/bi";
@@ -7,11 +8,19 @@ import Link from "next/link";
 import { FaComment } from "react-icons/fa";
 import { AiTwotoneMail, AiOutlineTwitter, AiFillYoutube } from "react-icons/ai";
 import { HiDevicePhoneMobile } from "react-icons/hi2";
+import { usePathname } from "next/navigation";
+import { noHeaderFooter } from "@/data";
 
 export default function Footer() {
+  const pathName = usePathname();
+  const newPathName = pathName.split("/").splice(1, 1).toString();
   return (
     <footer className=" bg-orange-100 ">
-      <div className="px-5 py-9 lg:px-20">
+      <div
+        className={`px-5 py-9 lg:px-20 ${
+          noHeaderFooter.includes(newPathName) && "hidden"
+        }`}
+      >
         <div className="flex flex-col">
           <div className="flex flex-col gap-2">
             <div className=" flex items-center justify-between text-lg lg:flex-row-reverse">

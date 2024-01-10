@@ -1,14 +1,12 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
 
 type Props = {
   category?: string;
+  productName: string;
 };
 
-const PathName = ({ category }: Props) => {
-  const pathName = usePathname();
+const PathName = ({ category, productName }: Props) => {
   return (
     <>
       <Link href={`/`}>Home</Link>/
@@ -17,8 +15,8 @@ const PathName = ({ category }: Props) => {
           <Link href={`/collections/${category}`}>{category}</Link>/
         </>
       )}
-      <Link href={``} className="underline-offset-1">
-        {pathName.split("/").pop()}
+      <Link href={``} className="hover:underline hover:underline-offset-2 ">
+        {productName}
       </Link>
     </>
   );

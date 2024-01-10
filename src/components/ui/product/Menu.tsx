@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 type Props = {
-  categories: [];
+  category: [];
   selectedRoast: any[];
   handleRoastChange: any;
   selectedType: string[];
@@ -12,7 +12,7 @@ type Props = {
 };
 
 const Menu = ({
-  categories,
+  category,
   selectedType,
   handleTypeChange,
   selectedRoast,
@@ -28,8 +28,8 @@ const Menu = ({
   };
 
   // Filter
-  const roastFilter = getUniqueCatg(categories, "roast");
-  const typesFilter = getUniqueCatg(categories, "types");
+  const roastFilter = getUniqueCatg(category, "roast");
+  const typesFilter = getUniqueCatg(category, "types");
 
   // roastLevel
   const roastLevelCheck = (roastFilter: string[]) => {

@@ -16,6 +16,8 @@ export const linkMoblie = [
   { id: 5, title: "Location", url: "/locations/" },
 ];
 
+export const noHeaderFooter = ["pay"];
+
 type ItemsNotificate = {
   id: number;
   text: string;

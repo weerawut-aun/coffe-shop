@@ -11,14 +11,7 @@ export async function GET(req: NextRequest) {
         catSlug: cat!,
       },
       include: {
-        coffee: {
-          select: {
-            roast: true,
-            ingredient: true,
-            types: true,
-            description: true,
-          },
-        },
+        coffee: true,
       },
     });
     if (products) {
@@ -31,13 +24,7 @@ export async function GET(req: NextRequest) {
           catSlug: cat!,
         },
         include: {
-          goods: {
-            select: {
-              type: true,
-              description: true,
-              features: true,
-            },
-          },
+          goods: true,
         },
       });
 
