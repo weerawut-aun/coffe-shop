@@ -1,20 +1,20 @@
 "use client";
 
-import { ProductType } from "@/app/types/types";
+import { CoffeeType, ProductTypes } from "@/app/types/types";
 import { formatPrice } from "@/lib/format";
 
 import Image from "next/image";
 import Link from "next/link";
 
 interface CardProductProps {
-  product: ProductType;
+  product: CoffeeType;
 }
 
 export default function CardProduct({ product }: CardProductProps) {
   return (
     <>
       <div className="relative flex h-auto w-[35vh] items-center justify-center bg-slate-200  md:h-[60vh] md:w-[50vh] ">
-        <Link href={`/collections/${product.catSlug}/product/${product.id}`}>
+        <Link href={`/collections/all-coffee/product/${product.id}`}>
           {product.imageUrl && (
             <Image
               src={product.imageUrl}
@@ -42,14 +42,14 @@ export default function CardProduct({ product }: CardProductProps) {
           </h5>
         </Link>
         <div className="flex gap-5">
-          {product.coffee?.map((item, index) => (
+          {/* {product.coffee?.map((item, index) => (
             <span
               className="text-xs  font-semibold uppercase lg:text-sm"
               key={index}
             >
               {item.ingredient.join(" · ")}
             </span>
-          ))}
+          ))} */}
         </div>
         <span className="text-base font-medium lg:text-sm">
           {formatPrice(product.price)}

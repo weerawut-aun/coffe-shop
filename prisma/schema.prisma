@@ -10,12 +10,13 @@ datasource db {
 model Product {
   id        String     @id @default(auto()) @map("_id") @db.ObjectId
   imageUrl  String
-  name      String
+  title      String
   price     Int
   catSlug   String
   category  Category   @relation(fields: [catSlug], references: [slug])
   coffee    Coffee?
   goods     Good?
+  features    Boolean @default(false)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   CartItem  CartItem[]
@@ -47,9 +48,10 @@ model Coffee {
 
 model Good {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
-  type        Json[]
-  description Json[]
-  features    Json[]
+  berwing     Json[]
+  merch       Json[]
+  
+ 
   productId   String   @unique @db.ObjectId
   product     Product @relation(fields: [productId], references: [id])
 

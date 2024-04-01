@@ -14,11 +14,31 @@ export type ProductType = {
   goods?: { type: string[]; description: string[]; features: string[] }[];
 };
 
+export type ProductTypes = {
+  id: string;
+  name: string;
+  imageUrl: string;
+  price: number;
+  catSlug: string;
+  roast?: string;
+  level?: number;
+  ingredient?: string[];
+  type?: string;
+  origins?: string[];
+  brewing?: string[];
+  merch?: string[];
+};
+
 export type CoffeeType = {
-  roast: number;
+  id: string;
+  name: string;
+  imageUrl: string;
+  price: number;
+  roast: string;
+  level: number;
   ingredient: string[];
-  types: string;
-  description: string[];
+  type: string;
+  origins?: string[];
 };
 
 export type OrderType = {

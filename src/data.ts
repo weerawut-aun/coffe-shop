@@ -1,4 +1,4 @@
-import { ProductType } from "./app/types/types";
+import { ProductType, ProductTypes, CoffeeType } from "./app/types/types";
 
 export const links = [
   { id: 1, title: "Coffee", url: "/collections/all-coffee" },
@@ -475,5 +475,197 @@ export const ProductData: ProductType[] = [
         description: [],
       },
     ],
+  },
+];
+
+export const ProductEx: ProductTypes[] = [
+  {
+    id: "654d99e9f16495eb0f23c6ec",
+    name: "SERMON",
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/products/Sermon_c4c1e174-5789-432f-a38f-68d9670b5136.png?v=1670627814",
+    price: 1975,
+    catSlug: "all-coffee",
+    roast: "medium",
+    level: 5,
+    ingredient: ["BLUEBERRY PIE", " COCOA", "CANDIED PECAN"],
+    type: "BLEND",
+    origins: ["COLOMBIA", "EAST AFRICA"],
+  },
+  {
+    id: "654d9d7ff16495eb0f23c6ee",
+    name: "SERMON CRAFT INSTANT COFFEE 6 PACK",
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/products/Sermon_1.png?v=1658422154",
+    price: 1700,
+    catSlug: "all-coffee",
+    roast: "medium",
+    level: 5,
+    ingredient: ["BLUEBERRY PIE", " COCOA", "CANDIED PECAN"],
+    type: "BLEND",
+    origins: ["COLOMBIA", "EAST AFRICA"],
+  },
+  {
+    id: "654d9d7ff16495eb0f23c6ed",
+    name: "STREETLEVEL",
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/products/Streetlevel_10edf3d5-1dce-42cf-88a3-8d9ee4e0d976.png?v=1670627826",
+    price: 1975,
+    catSlug: "all-coffee",
+    roast: "medium",
+    level: 6,
+    ingredient: ["CLEMENTINE", "RED APPLE", "HONEYCOMB"],
+    type: "BLEND",
+    origins: ["HONDURAS", "GUATEMALA", "COLOMBIA"],
+  },
+  {
+    id: "654da282f16495eb0f23c6f0",
+    name: "MULUGETA",
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/files/Mulugeta_Jan_2024.png?v=1703706742",
+    price: 2450,
+    catSlug: "all-coffee",
+    roast: "light",
+    level: 2,
+    ingredient: ["CLEMENTINE", "RED APPLE", "HONEYCOMB"],
+    type: "SINGLE ORIGIN - ETHIOPIA",
+    origins: ["ETHIOPIA"],
+  },
+  {
+    id: "654da282f16495eb0f23c6f1",
+    name: "WILDER BLEND",
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/files/WilderBlendWBUPDATED_Jan_2024.png?v=1705005369",
+    price: 2200,
+    catSlug: "all-coffee",
+    roast: "medium",
+    level: 6,
+    ingredient: ["CLEMENTINE", "RED APPLE", "HONEYCOMB"],
+    type: "SEASONAL BLEND",
+    origins: ["COSTA RICA", "GUATEMALA", "MEXICO"],
+  },
+  {
+    id: "1234567890",
+    name: `2-IN-1 COFFEE SCOOP CLIP`,
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/files/Gold_Scoop_Clip.png?v=1701135939",
+    price: 50,
+    catSlug: "goods",
+    type: "goods",
+    brewing: ["accessories"],
+    merch: ["accessories"],
+  },
+  {
+    id: "2345678901",
+    name: `EVERGREEN DREAM CAMP MUG`,
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/files/Everygreencampmug1.png?v=1697836474",
+    price: 3500,
+    catSlug: "goods",
+    type: "goods",
+    merch: ["mug"],
+  },
+  {
+    id: "3456789012",
+    name: `DREAM KNIT BEANIE`,
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/files/BeanieGreen1.png?v=1697835538",
+    price: 3000,
+    catSlug: "goods",
+    type: "goods",
+    merch: ["accessories", "headwear", "clothing"],
+  },
+  {
+    id: "4567890123",
+    name: `MAGIC MOMENTS CANDLE`,
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/files/MagicalMomentsCandle.png?v=1698424018",
+    price: 2500,
+    catSlug: "goods",
+    type: "goods",
+    merch: ["accessories"],
+  },
+  {
+    id: "5678901234",
+    name: `THIRD WAVE WATER - CLASSIC LIGHT ROAST PROFILE`,
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/files/3ww3.png?v=1692044221",
+    price: 1700,
+    catSlug: "goods",
+    type: "goods",
+    brewing: ["brewes"],
+  },
+  {
+    id: "6789012345",
+    name: `HARIO V60 COFFEE FILTERS`,
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/products/V60_01_Filters_tabbed_2048x2048_4c029950-2709-42ff-82ea-a7795d29a9c1.png?v=1654098464",
+    price: 650,
+    catSlug: "goods",
+    type: "goods",
+    brewing: ["filters"],
+  },
+];
+export const CoffeeProduct: CoffeeType[] = [
+  {
+    id: "654d99e9f16495eb0f23c6ec",
+    name: "SERMON",
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/products/Sermon_c4c1e174-5789-432f-a38f-68d9670b5136.png?v=1670627814",
+    price: 1975,
+
+    roast: "medium",
+    level: 5,
+    ingredient: ["BLUEBERRY PIE", " COCOA", "CANDIED PECAN"],
+    type: "BLEND",
+    origins: ["COLOMBIA", "EAST AFRICA"],
+  },
+  {
+    id: "654d9d7ff16495eb0f23c6ee",
+    name: "SERMON CRAFT INSTANT COFFEE 6 PACK",
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/products/Sermon_1.png?v=1658422154",
+    price: 1700,
+    roast: "medium",
+    level: 5,
+    ingredient: ["BLUEBERRY PIE", " COCOA", "CANDIED PECAN"],
+    type: "BLEND",
+    origins: ["COLOMBIA", "EAST AFRICA"],
+  },
+  {
+    id: "654d9d7ff16495eb0f23c6ed",
+    name: "STREETLEVEL",
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/products/Streetlevel_10edf3d5-1dce-42cf-88a3-8d9ee4e0d976.png?v=1670627826",
+    price: 1975,
+    roast: "medium",
+    level: 6,
+    ingredient: ["CLEMENTINE", "RED APPLE", "HONEYCOMB"],
+    type: "BLEND",
+    origins: ["HONDURAS", "GUATEMALA", "COLOMBIA"],
+  },
+  {
+    id: "654da282f16495eb0f23c6f0",
+    name: "MULUGETA",
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/files/Mulugeta_Jan_2024.png?v=1703706742",
+    price: 2450,
+    roast: "light",
+    level: 2,
+    ingredient: ["CLEMENTINE", "RED APPLE", "HONEYCOMB"],
+    type: "SINGLE ORIGIN - ETHIOPIA",
+    origins: ["ETHIOPIA"],
+  },
+  {
+    id: "654da282f16495eb0f23c6f1",
+    name: "WILDER BLEND",
+    imageUrl:
+      "https://www.vervecoffee.com/cdn/shop/files/WilderBlendWBUPDATED_Jan_2024.png?v=1705005369",
+    price: 2200,
+    roast: "medium",
+    level: 6,
+    ingredient: ["CLEMENTINE", "RED APPLE", "HONEYCOMB"],
+    type: "SEASONAL BLEND",
+    origins: ["COSTA RICA", "GUATEMALA", "MEXICO"],
   },
 ];
