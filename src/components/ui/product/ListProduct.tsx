@@ -1,9 +1,7 @@
 "use client";
 
 import CardProduct from "../../CardProduct";
-import { CoffeeType, ProductTypes } from "@/app/types/types";
-
-import { ProductEx } from "@/data";
+import { CoffeeType } from "@/app/types/types";
 import { useEffect, useState } from "react";
 
 import MenuCoffee from "./FilterCategory/MenuCoffee";

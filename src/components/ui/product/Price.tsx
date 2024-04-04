@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 import { formatPrice } from "@/lib/format";
 import { useCartStore } from "@/lib/store";
 import ButtonGlobal from "@/components/ButtonGlobal";
-import { ProductType } from "@/app/types/types";
+import { CoffeeType, ProductType } from "@/app/types/types";
 import { toast } from "react-toastify";
 
 type Props = {
-  product: ProductType;
+  product: CoffeeType;
 };
 
 function Price({ product }: Props) {

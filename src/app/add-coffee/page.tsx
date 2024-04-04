@@ -2,15 +2,15 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 type Inputs = {
   name: string;
   imageUrl: string;
   price: number;
-  category: string;
-  roast: number;
-  types: string;
+  level: number;
+  roast: string;
+  type: string;
 };
 
 const AddCaffeePage = () => {
@@ -18,14 +18,16 @@ const AddCaffeePage = () => {
     name: "",
     imageUrl: "",
     price: 0,
-    category: "",
-    roast: 0,
-    types: "",
+    level: 0,
+    roast: "",
+    type: "",
   });
 
   const [ingredient, setIngredient] = useState<string>("");
-
   const [ingredients, setIngredients] = useState<string[]>([]);
+
+  const [origin, setOrigin] = useState<string>("");
+  const [origins, setOrigins] = useState<string[]>([]);
 
   const router = useRouter();
 
@@ -45,11 +47,17 @@ const AddCaffeePage = () => {
         method: "POST",
         body: JSON.stringify({
           ...inputs,
-          category: "coffee",
           ingredients,
+          origins,
         }),
         headers: { "Content-Type": "application/json" },
       });
+
+      if (!res.ok) {
+        alert("กรุณากรอกรายละเอียดให้ครบด้วย");
+
+        throw new Error("Failed to submit the data. Please try again.");
+      }
 
       const data = await res.json();
 
@@ -61,54 +69,72 @@ const AddCaffeePage = () => {
   };
   return (
     <div className="bg-orange-50">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-12 uppercase md:w-[100] ">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-4 px-6 py-12 uppercase md:w-[100] ">
         <h1 className="mb-4 text-2xl md:text-center">Add Coffee</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <div className="flex flex-col">
-            <label className="my-4 text-xs md:text-sm">Name</label>
+            <label className="my-4 text-xs md:text-sm ">Title</label>
             <input
               type="text"
-              name="name"
-              className="mb-4 rounded-md border-none outline-none"
+              name="title"
+              className="mb-4 w-96 rounded-md border-none outline-none"
               onChange={handleChange}
             />
           </div>
-          <div className="flex flex-row  justify-around">
-            <div className="flex flex-col">
-              <label className="my-4 text-xs md:text-sm">Price</label>
-              <input
-                type="number"
-                name="price"
-                className="mb-4 w-80 rounded-md border-none outline-none"
-                onChange={handleChange}
-              />
-            </div>
-            <div className="flex flex-col">
-              <label className="my-4  text-xs md:text-sm">Roast</label>
-              <input
-                type="number"
-                name="roast"
-                className="mb-4 w-80 rounded-md border-none outline-none"
-                onChange={handleChange}
-              />
-            </div>
-            <div className="flex flex-col">
-              <label className="my-4 text-xs md:text-sm">Type</label>
-              <input
-                type="text"
-                name="types"
-                className="mb-4 w-80 rounded-md border-none outline-none"
-                onChange={handleChange}
-              />
-            </div>
+          <div className="flex flex-col">
+            <label className="my-4 w-96 text-xs md:text-sm">Image Url</label>
+            <input
+              type="url"
+              name="imageUrl"
+              className="mb-4 w-full rounded-md border-none outline-none"
+              onChange={handleChange}
+            />
           </div>
+
+          <div className="flex flex-col">
+            <label className="my-4 text-xs md:text-sm">Price</label>
+            <input
+              type="number"
+              name="price"
+              className="mb-4 w-96 rounded-md border-none outline-none"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="my-4  text-xs md:text-sm">Roast Level</label>
+            <input
+              type="number"
+              name="level"
+              className="mb-4 w-96 rounded-md border-none outline-none"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="my-4  text-xs md:text-sm">Roast</label>
+            <input
+              type="text"
+              name="roast"
+              className="mb-4 w-96 rounded-md border-none outline-none"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="my-4 text-xs md:text-sm">Type</label>
+            <input
+              type="text"
+              name="type"
+              className="mb-4 w-96 rounded-md border-none outline-none"
+              onChange={handleChange}
+            />
+          </div>
+
           <div className="flex flex-col">
             <label className="my-4 text-xs md:text-sm">Ingredient</label>
 
             <input
               type="text"
               name="ingredient"
-              className="mb-4 w-80 rounded-md border-none outline-none"
+              className="mb-4 w-96 rounded-md border-none outline-none"
               onChange={(e) => setIngredient(e.target.value)}
             />
           </div>
@@ -134,35 +160,48 @@ const AddCaffeePage = () => {
             ))}
           </div>
           <div className="flex flex-col">
-            <label className="my-4 text-xs md:text-sm">Image Url</label>
-            <input
-              type="url"
-              name="imageUrl"
-              className="mb-4 rounded-md border-none outline-none"
-              onChange={handleChange}
-            />
-          </div>
-
-          {/* <div className="flex flex-col">
-            <label className="my-4 text-xs md:text-sm">Title</label>
+            <label className="my-4 text-xs md:text-sm">Region</label>
             <input
               type="text"
-              name="title"
-              className="mb-4 rounded-md border-none outline-none"
+              name="region"
+              className="mb-4 w-80 rounded-md border-none outline-none"
               onChange={handleChange}
             />
           </div>
           <div className="flex flex-col">
-            <label className="my-4 text-xs md:text-sm">Description</label>
-            <textarea
-              name="description"
-              className="mb-4 rounded-md border-none outline-none"
-              onChange={handleChange}
+            <label className="my-4 text-xs md:text-sm">Origins</label>
+
+            <input
+              type="text"
+              name="origins"
+              className="mb-4 w-80 rounded-md border-none outline-none"
+              onChange={(e) => setOrigin(e.target.value)}
             />
-          </div> */}
+          </div>
+
+          <div
+            className="w-52 rounded-md bg-black px-6 py-3 text-center text-white"
+            onClick={() => setOrigins((prev) => [...prev, origin])}
+          >
+            Add Origins
+          </div>
+
+          <div className="my-2 flex flex-wrap gap-4">
+            {origins.map((item, index) => (
+              <div
+                className="w-52 rounded-md bg-black px-6 py-3 text-center text-white"
+                key={index}
+                onClick={() =>
+                  setOrigins(origins.filter((opt) => opt !== item))
+                }
+              >
+                {item}
+              </div>
+            ))}
+          </div>
 
           <button className="rounded-md bg-black px-6 py-3 text-white">
-            Add Coffee
+            Add
           </button>
         </form>
       </div>

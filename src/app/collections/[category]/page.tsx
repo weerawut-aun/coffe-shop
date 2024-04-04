@@ -1,9 +1,9 @@
-import { ProductType } from "@/app/types/types";
+import { CoffeeType, ProductType } from "@/app/types/types";
 import AddButton from "@/components/AddButton";
 
 import ListProduct from "@/components/ui/product/ListProduct";
 import ListGoods from "@/components/ui/product/ListGoods";
-import { CoffeeProduct, ProductEx } from "@/data";
+import { CoffeeProduct, GoodsProduct, ProductEx } from "@/data";
 
 type Props = {
   params: { category: string };
@@ -50,18 +50,17 @@ export async function generateMetadata({ params: { category } }: Props) {
 }
 
 const CategoryPage = async ({ params }: Props) => {
-  // const products: ProductType[] = await getProduct(params.category);
+  const products: CoffeeType[] = await getProduct(params.category);
   // const categories: [] = await getCategory();
 
   const catSlug = params.category;
 
-  const products = CoffeeProduct;
-  // const coffeeProducts = ProductEx.filter(
-  //   (product) => product.catSlug === "all-coffee"
+  // const products = CoffeeProduct;
+
+  const goods = GoodsProduct;
+  // const goodsProducts = ProductEx.filter(
+  //   (product) => product.catSlug === "goods"
   // );
-  const goodsProducts = ProductEx.filter(
-    (product) => product.catSlug === "goods"
-  );
 
   return (
     <main className="bg-orange-50">
@@ -78,13 +77,8 @@ const CategoryPage = async ({ params }: Props) => {
           {catSlug === "all-coffee" ? (
             <ListProduct products={products} catSlug={catSlug} />
           ) : (
-            <ListGoods products={goodsProducts} catSlug={catSlug} />
+            <ListGoods products={goods} catSlug={catSlug} />
           )}
-          {/* {catSlug === "all-coffee" ? (
-            <ListProduct products={coffeeProducts} catSlug={catSlug} />
-          ) : (
-            <ListProduct products={goodsProducts} catSlug={catSlug} />
-          )} */}
         </div>
       </div>
     </main>

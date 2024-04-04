@@ -8,12 +8,9 @@ export async function GET(
   const { id } = params;
 
   try {
-    const product = await prisma.product.findUnique({
+    const product = await prisma.coffee.findUnique({
       where: {
         id,
-      },
-      include: {
-        coffee: true,
       },
     });
     return new NextResponse(JSON.stringify(product), {

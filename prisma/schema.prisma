@@ -7,77 +7,84 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Product {
-  id        String     @id @default(auto()) @map("_id") @db.ObjectId
-  imageUrl  String
-  title      String
-  price     Int
-  catSlug   String
-  category  Category   @relation(fields: [catSlug], references: [slug])
-  coffee    Coffee?
-  goods     Good?
-  features    Boolean @default(false)
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  CartItem  CartItem[]
+// model Product {
+//   id        String     @id @default(auto()) @map("_id") @db.ObjectId
+//   imageUrl  String
+//   title      String
+//   price     Int
+//   catSlug   String
+//   category  Category   @relation(fields: [catSlug], references: [slug])
+//   coffee    Coffee?
+//   goods     Good?
+//   features    Boolean @default(false)
+//   createdAt DateTime   @default(now())
+//   updatedAt DateTime   @updatedAt
+//   CartItem  CartItem[]
 
-  @@map("products")
-}
+//   @@map("products")
+// }
 
 model Category {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
   title String
   slug  String @unique
 
-  product Product[]
+  // product Product[]
 
   @@map("category")
 }
 
 model Coffee {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
-  roast       Int?
-  types       String?
+  imageUrl  String
+  title     String
+  price     Int
+  roast     String
+  level     Int
+  type       String?
   ingredient  Json[]
-  description Json[]
-  productId   String   @unique @db.ObjectId
-  product     Product @relation(fields: [productId], references: [id])
+  region     String?
+  origins    Json[]
+ 
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  
 
   @@map("coffee")
 }
 
-model Good {
-  id          String  @id @default(auto()) @map("_id") @db.ObjectId
-  berwing     Json[]
-  merch       Json[]
+// model Good {
+//   id          String  @id @default(auto()) @map("_id") @db.ObjectId
+//   berwing     Json[]
+//   merch       Json[]
   
  
-  productId   String   @unique @db.ObjectId
-  product     Product @relation(fields: [productId], references: [id])
+//   productId   String   @unique @db.ObjectId
+//   product     Product @relation(fields: [productId], references: [id])
 
-  @@map("goods")
-}
+//   @@map("goods")
+// }
 
-model Cart {
-  id    String     @id @default(auto()) @map("_id") @db.ObjectId
-  items CartItem[]
+// model Cart {
+//   id    String     @id @default(auto()) @map("_id") @db.ObjectId
+//   items CartItem[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
 
-  @@map("carts")
-}
+//   @@map("carts")
+// }
 
-model CartItem {
-  id        String  @id @default(auto()) @map("_id") @db.ObjectId
-  productId String  @db.ObjectId
-  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-  quantity  Int
-  cartId    String  @db.ObjectId
-  cart      Cart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
+// model CartItem {
+//   id        String  @id @default(auto()) @map("_id") @db.ObjectId
+//   productId String  @db.ObjectId
+//   product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+//   quantity  Int
+//   cartId    String  @db.ObjectId
+//   cart      Cart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
 
-  @@map("cartItems")
-}
+//   @@map("cartItems")
+// }
 
 model Account {
   id                String  @id @default(auto()) @map("_id") @db.ObjectId

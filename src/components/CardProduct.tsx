@@ -1,6 +1,6 @@
 "use client";
 
-import { CoffeeType, ProductTypes } from "@/app/types/types";
+import { CoffeeType } from "@/app/types/types";
 import { formatPrice } from "@/lib/format";
 
 import Image from "next/image";
@@ -38,18 +38,14 @@ export default function CardProduct({ product }: CardProductProps) {
       <div className="flex flex-col flex-wrap gap-4 px-5 pb-5 md:gap-1 md:px-2">
         <Link href={`/product/${product.id}`}>
           <h5 className="py-3 text-sm font-light uppercase md:text-left md:text-lg">
-            {product.name}
+            {product.title}
           </h5>
         </Link>
         <div className="flex gap-5">
-          {/* {product.coffee?.map((item, index) => (
-            <span
-              className="text-xs  font-semibold uppercase lg:text-sm"
-              key={index}
-            >
-              {item.ingredient.join(" · ")}
-            </span>
-          ))} */}
+          <span className="text-xs  font-semibold uppercase lg:text-sm">
+            {" "}
+            {product.ingredient.join(" · ")}
+          </span>
         </div>
         <span className="text-base font-medium lg:text-sm">
           {formatPrice(product.price)}

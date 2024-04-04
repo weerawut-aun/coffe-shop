@@ -2,74 +2,52 @@ import prisma from "@/lib/db/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-  const cat = searchParams.get("cat");
+  const coffee = await prisma.coffee.findMany();
 
-  try {
-    const products = await prisma.product.findMany({
-      where: {
-        catSlug: cat!,
-      },
-      include: {
-        coffee: true,
-      },
-    });
-    if (products) {
-      return new NextResponse(JSON.stringify(products), {
-        status: 200,
-      });
-    } else {
-      const products = await prisma.product.findMany({
-        where: {
-          catSlug: cat!,
-        },
-        include: {
-          goods: true,
-        },
-      });
-
-      return new NextResponse(JSON.stringify(products), { status: 200 });
-    }
-  } catch (err) {
-    console.log(err);
-
-    return new NextResponse(
-      JSON.stringify({ message: "Something went wrong" }),
-      { status: 500 }
-    );
-  }
+  return new NextResponse(JSON.stringify(coffee));
 }
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
+    const {
+      title,
+      imageUrl,
+      price,
+      level,
+      type,
+      roast,
+      ingredients,
+      origins,
+      region,
+    } = body;
 
-    const { name, imageUrl, price, roast, types, ingredients, category } = body;
+    const priceToInt = Number(price);
+    const levelToInt = Number(level);
 
-    const priceToNum = Number(price);
-    const roastToNum = Number(roast);
+    if (title.length === 0 || imageUrl.length === 0 || price.length === 0) {
+      return new NextResponse(
+        JSON.stringify({ message: "กรุณากรอกชื่อ ลิ้งรูปภาพและราคาสินค้า" })
+      );
+    }
 
-    const product = await prisma.product.create({
+    const product = await prisma.coffee.create({
       data: {
-        name,
+        title,
         imageUrl,
-        price: priceToNum,
-        catSlug: "all-coffee",
-        coffee: {
-          create: {
-            roast: roastToNum,
-            types,
-            ingredient: ingredients,
-          },
-        },
+        level: levelToInt,
+        price: priceToInt,
+        type,
+        roast,
+        ingredient: ingredients,
+        origins,
+        region,
       },
     });
-
     return new NextResponse(JSON.stringify(product), {
       status: 200,
     });
   } catch (err) {
-    console.log(err);
     return new NextResponse(
       JSON.stringify({ message: "Something went wrong" }),
       { status: 500 }

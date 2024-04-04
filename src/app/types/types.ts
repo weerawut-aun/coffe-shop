@@ -31,7 +31,7 @@ export type ProductTypes = {
 
 export type CoffeeType = {
   id: string;
-  name: string;
+  title: string;
   imageUrl: string;
   price: number;
   roast: string;
@@ -39,6 +39,16 @@ export type CoffeeType = {
   ingredient: string[];
   type: string;
   origins?: string[];
+  region?: string;
+};
+
+export type GoodsType = {
+  id: string;
+  name: string;
+  imageUrl: string;
+  price: number;
+  brewing?: string[];
+  merch?: string[];
 };
 
 export type OrderType = {

@@ -46,7 +46,7 @@ export default function LoginPage() {
             />
           </div>
           <div className="flex flex-col">
-            <label className="my-4 text-xs md:text-sm">Poassword</label>
+            <label className="my-4 text-xs md:text-sm">Paassword</label>
             <input
               type="password"
               name="password"
