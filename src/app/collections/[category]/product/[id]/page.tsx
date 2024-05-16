@@ -90,36 +90,28 @@ export default async function ProductsPage({ params: { id } }: Props) {
               <h5 className="text-left text-sm">Origins</h5>
               <div className="flex">
                 <ul className="flex flex-wrap gap-3">
-                  <li>
-                    <Image
-                      src="/Map/honduras.png"
-                      alt={`honduras`}
-                      width={90}
-                      height={90}
-                      className="object-cover"
-                    />
-                    <p className="text-sm">honduras</p>
-                  </li>
-                  <li>
-                    <Image
-                      src="/Map/guatemala.png"
-                      alt={`guatemala`}
-                      width={90}
-                      height={90}
-                      className="object-cover"
-                    />
-                    <p className="text-sm">guatemala</p>
-                  </li>
-                  <li>
-                    <Image
-                      src="/Map/colombia.png"
-                      alt={`colombia`}
-                      width={90}
-                      height={90}
-                      className="object-cover"
-                    />
-                    <p className="text-sm">colombia</p>
-                  </li>
+                  {product.origins?.map((origin: string, idx: number) => (
+                    <li key={idx}>
+                      {origin == "east africa" ? (
+                        <Image
+                          src={`/Map/africa.png`}
+                          alt={origin}
+                          width={90}
+                          height={90}
+                          className="object-cover"
+                        />
+                      ) : (
+                        <Image
+                          src={`/Map/${origin}.png`}
+                          alt={origin}
+                          width={90}
+                          height={90}
+                          className="object-cover"
+                        />
+                      )}
+                      <p className="text-sm">{origin}</p>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

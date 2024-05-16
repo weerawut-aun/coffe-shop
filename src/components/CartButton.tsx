@@ -23,6 +23,7 @@ export function CartButton() {
     removeFromCart,
     increaseQuantity,
     decreaseQuantity,
+    reset,
   } = useCartStore();
 
   useEffect(() => {
@@ -99,7 +100,7 @@ export function CartButton() {
                   <div className="relative m-0 flex h-36 w-[20%] max-w-full justify-center   p-0">
                     <Image
                       src={item.imageUrl}
-                      alt={item.name}
+                      alt="title Products"
                       fill
                       className=" object-contain"
                     />
@@ -108,7 +109,7 @@ export function CartButton() {
 
                 <div className="relative flex w-[calc(100%-90px)] flex-auto flex-wrap items-center justify-start pl-5  ">
                   <p className="mb-2  pr-5 text-xl uppercase leading-6 md:pr-8">
-                    {item.name}
+                    {item.title}
                   </p>
                   <button
                     type="button"

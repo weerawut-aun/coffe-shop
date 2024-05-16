@@ -731,3 +731,91 @@ export const GoodsProduct: GoodsType[] = [
     merch: ["none"],
   },
 ];
+
+export const Products: ProductType[] = [
+  {
+    id: "654da282f16495eb0f23c6f1",
+    title: "WILDER BLEND",
+    imageUrl: [
+      "https://www.vervecoffee.com/cdn/shop/files/WilderBlendWBUPDATED_Jan_2024.png?v=1705005369",
+    ],
+    catSlug: "coffee",
+    price: 2200,
+    variants: {
+      roast: "medium",
+      level: 6,
+      ingredient: ["CLEMENTINE", "RED APPLE", "HONEYCOMB"],
+      types: "SEASONAL BLEND",
+      origins: ["COSTA RICA", "GUATEMALA", "MEXICO"],
+    },
+  },
+  {
+    id: "654da282f16495eb0f23c6f0",
+    title: "MULUGETA",
+    imageUrl: [
+      "https://www.vervecoffee.com/cdn/shop/files/Mulugeta_Jan_2024.png?v=1703706742",
+    ],
+    price: 2450,
+    catSlug: "coffee",
+    variants: {
+      roast: "light",
+      level: 2,
+      ingredient: ["CLEMENTINE", "RED APPLE", "HONEYCOMB"],
+      types: "SINGLE ORIGIN - ETHIOPIA",
+      origins: ["ETHIOPIA"],
+    },
+  },
+  {
+    id: "654d99e9f16495eb0f23c6ec",
+    title: "SERMON",
+    imageUrl: [
+      "https://www.vervecoffee.com/cdn/shop/products/Sermon_c4c1e174-5789-432f-a38f-68d9670b5136.png?v=1670627814",
+    ],
+    price: 1975,
+    catSlug: "coffee",
+    variants: {
+      roast: "medium",
+      level: 5,
+      ingredient: ["BLUEBERRY PIE", " COCOA", "CANDIED PECAN"],
+      types: "BLEND",
+      origins: ["COLOMBIA", "EAST AFRICA"],
+    },
+  },
+  {
+    id: "6789012345",
+    title: `HARIO V60 COFFEE FILTERS`,
+    imageUrl: [
+      "https://www.vervecoffee.com/cdn/shop/products/V60_01_Filters_tabbed_2048x2048_4c029950-2709-42ff-82ea-a7795d29a9c1.png?v=1654098464",
+    ],
+    price: 650,
+    catSlug: "goods",
+    variants: {
+      brewing: ["filters"],
+    },
+  },
+  {
+    id: "1234567890",
+    title: `2-IN-1 COFFEE SCOOP CLIP`,
+    imageUrl: [
+      "https://www.vervecoffee.com/cdn/shop/files/Gold_Scoop_Clip.png?v=1701135939",
+    ],
+    price: 50,
+    catSlug: "goods",
+    variants: {
+      brewing: ["accessories"],
+      merch: ["accessories"],
+    },
+  },
+  {
+    id: "2345678901",
+    title: `EVERGREEN DREAM CAMP MUG`,
+    imageUrl: [
+      "https://www.vervecoffee.com/cdn/shop/files/Everygreencampmug1.png?v=1697836474",
+    ],
+    price: 3500,
+    catSlug: "goods",
+    variants: {
+      merch: ["mug"],
+    },
+  },
+];

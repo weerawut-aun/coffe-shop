@@ -1,32 +1,49 @@
+// export type ProductType = {
+//   id: string;
+//   name: string;
+//   imageUrl: string;
+//   price: number;
+//   title: string;
+//   catSlug: string;
+//   coffee?: {
+//     roast: number;
+//     ingredient: string[];
+//     types: string;
+//     description: string[];
+//   }[];
+//   goods?: { type: string[]; description: string[]; features: string[] }[];
+// };
+
+// export type ProductTypes = {
+//   id: string;
+//   name: string;
+//   imageUrl: string;
+//   price: number;
+//   catSlug: string;
+//   roast?: string;
+//   level?: number;
+//   ingredient?: string[];
+//   type?: string;
+//   origins?: string[];
+//   brewing?: string[];
+//   merch?: string[];
+// };
+
 export type ProductType = {
   id: string;
-  name: string;
-  imageUrl: string;
-  price: number;
   title: string;
-  catSlug: string;
-  coffee?: {
-    roast: number;
-    ingredient: string[];
-    types: string;
-    description: string[];
-  }[];
-  goods?: { type: string[]; description: string[]; features: string[] }[];
-};
-
-export type ProductTypes = {
-  id: string;
-  name: string;
-  imageUrl: string;
+  imageUrl: string[];
   price: number;
   catSlug: string;
-  roast?: string;
-  level?: number;
-  ingredient?: string[];
-  type?: string;
-  origins?: string[];
-  brewing?: string[];
-  merch?: string[];
+  variants: {
+    roast?: string;
+    level?: number;
+    ingredient?: string[];
+    types?: string;
+    origins?: string[];
+    brewing?: string[];
+    merch?: string[];
+  };
 };
 
 export type CoffeeType = {
@@ -63,7 +80,7 @@ export type OrderType = {
 
 export type CartItemType = {
   id: string;
-  name: string;
+  title: string;
   imageUrl?: string;
   price: number;
   totalPrice: number;

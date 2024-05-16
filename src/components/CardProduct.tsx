@@ -1,23 +1,23 @@
 "use client";
 
-import { CoffeeType } from "@/app/types/types";
+import { CoffeeType, ProductType } from "@/app/types/types";
 import { formatPrice } from "@/lib/format";
 
 import Image from "next/image";
 import Link from "next/link";
 
-interface CardProductProps {
-  product: CoffeeType;
+interface Props {
+  product: ProductType;
 }
 
-export default function CardProduct({ product }: CardProductProps) {
+export default function CardProduct({ product }: Props) {
   return (
     <>
-      <div className="relative flex h-auto w-[35vh] items-center justify-center bg-slate-200  md:h-[60vh] md:w-[50vh] ">
+      <div className="relative flex  items-center justify-center bg-slate-200 ">
         <Link href={`/collections/all-coffee/product/${product.id}`}>
           {product.imageUrl && (
             <Image
-              src={product.imageUrl}
+              src={product.imageUrl[0]}
               alt="product"
               width={250}
               height={250}
@@ -26,7 +26,7 @@ export default function CardProduct({ product }: CardProductProps) {
           )}
           {product.imageUrl && (
             <Image
-              src={product.imageUrl}
+              src={product.imageUrl[0]}
               alt="product"
               width={900}
               height={900}
@@ -43,8 +43,7 @@ export default function CardProduct({ product }: CardProductProps) {
         </Link>
         <div className="flex gap-5">
           <span className="text-xs  font-semibold uppercase lg:text-sm">
-            {" "}
-            {product.ingredient.join(" · ")}
+            {product.variants.ingredient?.join(" · ")}
           </span>
         </div>
         <span className="text-base font-medium lg:text-sm">

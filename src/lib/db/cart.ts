@@ -3,7 +3,7 @@ import prisma from "./prisma";
 import { Cart, Prisma } from "@prisma/client";
 
 export type CartWithProducts = Prisma.CartGetPayload<{
-  include: { items: { include: { product: true } } };
+  include: { items: { include: { coffee: true } } };
 }>;
 
 export type ShippingCart = CartWithProducts & {
@@ -16,7 +16,7 @@ export async function getCart(): Promise<ShippingCart | null> {
   const cart = localCartId
     ? await prisma.cart.findUnique({
         where: { id: localCartId },
-        include: { items: { include: { product: true } } },
+        include: { items: { include: { coffee: true } } },
       })
     : null;
   if (!cart) {
@@ -27,7 +27,7 @@ export async function getCart(): Promise<ShippingCart | null> {
     ...cart,
     size: cart.items.reduce((acc, item) => acc + item.quantity, 0),
     subtotal: cart.items.reduce(
-      (acc, item) => acc + item.quantity * item.product.price,
+      (acc, item) => acc + item.quantity * item.coffee.price,
       0
     ),
   };

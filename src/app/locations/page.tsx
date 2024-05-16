@@ -3,7 +3,12 @@ import HeroGobal from "@/components/ui/HeroGobal";
 import Hero from "@/components/ui/locations/Hero";
 import ListLocation from "@/components/ui/locations/ListLocation";
 
-import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const LazyMap = dynamic(() => import("@/components/ui/map/Map"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 
 export const metadata = {
   title: "All Locations",
@@ -44,13 +49,7 @@ export default function Location() {
               {/* info location */}
               <div className="flex flex-col md:flex-row">
                 <div className="w-full md:order-2">
-                  <Image
-                    src={`https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2831&q=80`}
-                    alt="location"
-                    width={500}
-                    height={500}
-                    className="w-full object-cover p-4 md:w-screen"
-                  />
+                  <LazyMap />
                 </div>
                 <div className="flex w-full flex-col p-10 md:order-1">
                   <div className=" flex flex-col items-center md:flex-row">
