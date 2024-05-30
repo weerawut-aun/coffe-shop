@@ -8,10 +8,9 @@ import MenuCoffee from "./FilterCategory/MenuCoffee";
 
 type Props = {
   products: ProductType[];
-  catSlug: string;
 };
 
-const ListProduct = ({ products, catSlug }: Props) => {
+const ListProduct = ({ products }: Props) => {
   const [productData, setProductData] = useState<ProductType[]>(products);
   const [selectedRoast, setSelecteRoast] = useState<any>([]);
   const [selectedType, setSelecteType] = useState<any>([]);
@@ -20,7 +19,7 @@ const ListProduct = ({ products, catSlug }: Props) => {
 
   //get Uniqure Category Filter
   const getUniqueCatg = (data: ProductType[], field: string) => {
-    const variants = data.map((item: any) => {
+    const variants = data.flatMap((item: any) => {
       return item.variants;
     });
 
@@ -45,8 +44,11 @@ const ListProduct = ({ products, catSlug }: Props) => {
     });
     return sortedProducts;
   };
+
   // Categorites Coffee
   const roast = getUniqueCatg(products, "roast");
+  console.log(roast);
+
   const types = getUniqueCatg(products, "types");
 
   // Sort ascending and descending
@@ -73,15 +75,17 @@ const ListProduct = ({ products, catSlug }: Props) => {
 
   useEffect(() => {
     const groupData = products.reduce((acc: any, item: any) => {
-      const roast = item.variants.roast;
-      const type = item.variants.types;
-      if (!acc[roast]) {
-        acc[roast] = {};
-      }
-      if (!acc[roast][type]) {
-        acc[roast][type] = [];
-      }
-      acc[roast][type].push(item);
+      item.variants.forEach((variant: any) => {
+        const roast = variant.roast;
+        const type = variant.types;
+        if (!acc[roast]) {
+          acc[roast] = {};
+        }
+        if (!acc[roast][type]) {
+          acc[roast][type] = [];
+        }
+        acc[roast][type].push({ ...item, variantType: type });
+      });
       return acc;
     }, {});
 
@@ -109,7 +113,7 @@ const ListProduct = ({ products, catSlug }: Props) => {
           } else {
             return Object.values(groupData[roast])
               .flat()
-              .map((item: any) => ({ ...item, type: item.type }));
+              .map((item: any) => ({ ...item, type: item.variantType }));
           }
         } else {
           return [];

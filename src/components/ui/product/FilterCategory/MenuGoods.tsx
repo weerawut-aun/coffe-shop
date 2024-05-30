@@ -5,10 +5,10 @@ import { AiOutlineClose } from "react-icons/ai";
 import { LuSettings2 } from "react-icons/lu";
 
 type Props = {
-  brewing: (string | undefined)[] | undefined;
-  merch: (string | undefined)[] | undefined;
-  selectedBrewing: any;
-  selectedMerch: any;
+  brewing: string[];
+  merch: string[];
+  selectedBrewing: string[];
+  selectedMerch: string[];
   handleBrewChange: (e: any) => void;
   handleMerchChange: (e: any) => void;
 };

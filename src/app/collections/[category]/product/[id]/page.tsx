@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Price from "@/components/ui/product/Price";
-import { CoffeeType, ProductType } from "@/app/types/types";
+import { ProductType } from "@/app/types/types";
 import Link from "next/link";
 import PathName from "@/components/ui/product/PathName";
 
@@ -9,7 +9,7 @@ interface Props {
     id: string;
   };
 }
-const getDate = async (id: string) => {
+const getData = async (id: string) => {
   const res = await fetch(`http://localhost:3000/api/products/${id}`, {
     method: "GET",
     cache: "no-store",
@@ -33,7 +33,7 @@ export async function generateMetadata({ params: { id } }: Props) {
 }
 
 export default async function ProductsPage({ params: { id } }: Props) {
-  const product: CoffeeType = await getDate(id);
+  // const product: ProductType[] = await getData(id);
 
   return (
     <div className="bg-slate-200 ">

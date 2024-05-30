@@ -29,54 +29,74 @@
 //   merch?: string[];
 // };
 
+export type VariantType = {
+  id: string;
+  roast?: string;
+  level?: number;
+  ingredient?: string[];
+  types?: string;
+  origins?: string[];
+  brewing?: string[];
+  merch?: string[];
+  productId: string;
+};
+
+// export type ProductType = {
+//   id: string;
+//   title: string;
+//   imageUrl: string[];
+//   price: number;
+//   catSlug: string;
+//   variants: {
+//     roast?: string;
+//     level?: number;
+//     ingredient?: string[];
+//     types?: string;
+//     origins?: string[];
+//     brewing?: string[];
+//     merch?: string[];
+//   };
+// };
 export type ProductType = {
   id: string;
   title: string;
   imageUrl: string[];
   price: number;
   catSlug: string;
-  variants: {
-    roast?: string;
-    level?: number;
-    ingredient?: string[];
-    types?: string;
-    origins?: string[];
-    brewing?: string[];
-    merch?: string[];
-  };
+  variants: VariantType[];
 };
 
-export type CoffeeType = {
-  id: string;
-  title: string;
-  imageUrl: string;
-  price: number;
-  roast: string;
-  level: number;
-  ingredient: string[];
-  type: string;
-  origins?: string[];
-  region?: string;
-};
+// export type CoffeeType = {
+//   id: string;
+//   title: string;
+//   imageUrl: string;
+//   price: number;
+//   roast: string;
+//   level: number;
+//   ingredient: string[];
+//   type: string;
+//   origins?: string[];
+//   region?: string;
+// };
 
-export type GoodsType = {
-  id: string;
-  name: string;
-  imageUrl: string;
-  price: number;
-  brewing?: string[];
-  merch?: string[];
-};
+// export type GoodsType = {
+//   id: string;
+//   name: string;
+//   imageUrl: string;
+//   price: number;
+//   brewing?: string[];
+//   merch?: string[];
+// };
 
-export type OrderType = {
-  id: string;
-  userEmail: string;
-  price: number;
-  products: CartItemType[];
-  status: string;
-  createdAt: Date;
-  intent_id?: string;
-};
+// export type OrderType = {
+//   id: string;
+//   userEmail: string;
+//   price: number;
+//   products: CartItemType[];
+//   status: string;
+//   createdAt: Date;
+//   intent_id?: string;
+// };
 
 export type CartItemType = {
   id: string;

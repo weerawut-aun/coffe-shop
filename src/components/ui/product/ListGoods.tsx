@@ -1,39 +1,37 @@
 "use client";
 
 import CardProduct from "../../CardProduct";
-import { ProductType } from "@/app/types/types";
+import { ProductType, VariantType } from "@/app/types/types";
 
 import { useEffect, useState } from "react";
 import MenuGoods from "./FilterCategory/MenuGoods";
 
 type Props = {
   products: ProductType[];
-  catSlug: string;
 };
 
-const ListGoods = ({ products, catSlug }: Props) => {
+const ListGoods = ({ products }: Props) => {
   const [productData, setProductData] = useState<ProductType[]>(products);
-  const [selectedBrewing, setSelectedBrewing] = useState<any>([]);
-  const [selectedMerch, setSetselectedMerch] = useState<any>([]);
+  const [brewingValues, setBrewingValues] = useState<string[]>([]);
+  const [merchValues, setMerchValues] = useState<string[]>([]);
+  const [selectedBrewing, setSelectedBrewing] = useState<string[]>([]);
+  const [selectedMerch, setselectedMerch] = useState<string[]>([]);
   const [selectedPrice, setSelectedPrice] = useState<string>("bestSelling");
   const [dataPresent, setDataPresent] = useState<boolean>(false);
 
-  const getUniqueCatg = (data: ProductType[], field: string) => {
-    if (field === "brewing") {
-      const brewingVariants = data
-        .filter((item) => item.variants && item.variants.brewing !== undefined)
-        .map((item) => item.variants.brewing)
-        .flat(); // Flatten the array of arrays into a single array
-
-      return [...new Set(brewingVariants)]; // Return unique values
-    } else if (field === "merch") {
-      const merchVariants = data
-        .filter((item) => item.variants && item.variants.merch !== undefined)
-        .map((item) => item.variants.merch)
-        .flat(); // Flatten the array of arrays into a single array
-
-      return [...new Set(merchVariants)]; // Return unique values
+  const getUniqueCatg = async (field: keyof VariantType): Promise<string[]> => {
+    // Check if the field is valid
+    if (!["brewing", "merch"].includes(field)) {
+      throw new Error(`Invalid field: ${field}`);
     }
+
+    // Extract the unique values from the specified field
+    const variants = products
+      .flatMap((product) => product.variants)
+      .flatMap((variant) => variant[field] || [])
+      .filter((value) => typeof value === "string") as string[];
+
+    return [...new Set(variants)];
   };
 
   const sortProductsByPrice = (products: ProductType[], sortOrder: string) => {
@@ -51,40 +49,38 @@ const ListGoods = ({ products, catSlug }: Props) => {
     });
     return sortedProducts;
   };
-  // Categorites Goods
-  const brewing = getUniqueCatg(products, "brewing");
-  const merch = getUniqueCatg(products, "merch");
 
   // Sort ascending and descending
   const productsAscending = sortProductsByPrice(products, "ascending");
   const productsDescending = sortProductsByPrice(products, "descending");
 
-  const handleBrewChange = (event: any) => {
+  const handleBrewChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const brewing = event.target.value;
 
-    if (event.target.checked) {
-      setSelectedBrewing([...selectedBrewing, brewing]);
-    } else {
-      setSelectedBrewing(
-        selectedBrewing.filter((brew: any) => brew !== brewing)
-      );
-    }
+    setSelectedBrewing((prev) =>
+      prev.includes(brewing)
+        ? prev.filter((item) => item !== brewing)
+        : [...prev, brewing]
+    );
   };
 
-  const handleMerchChange = (event: any) => {
+  const handleMerchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const merch = event.target.value;
 
-    if (event.target.checked) {
-      setSetselectedMerch([...selectedMerch, merch]);
-    } else {
-      setSetselectedMerch(selectedMerch.filter((mch: any) => mch !== merch));
-    }
+    setselectedMerch((prev) =>
+      prev.includes(merch)
+        ? prev.filter((item) => item !== merch)
+        : [...prev, merch]
+    );
   };
 
   useEffect(() => {
+    getUniqueCatg("brewing").then((values) => setBrewingValues(values));
+    getUniqueCatg("merch").then((values) => setMerchValues(values));
+
     const groupData = products.reduce((acc: any, item: any) => {
-      const brewing = item.variants.brewing;
-      const merch = item.variants.merch;
+      const brewing = item.variants.flatMap((variant: any) => variant.brewing);
+      const merch = item.variants.flatMap((variant: any) => variant.merch);
 
       if (!acc[brewing]) {
         acc[brewing] = {};
@@ -96,6 +92,7 @@ const ListGoods = ({ products, catSlug }: Props) => {
       acc[brewing][merch].push(item);
       return acc;
     }, {});
+
     if (
       (selectedBrewing.length === 0 &&
         selectedMerch.length === 0 &&
@@ -124,6 +121,7 @@ const ListGoods = ({ products, catSlug }: Props) => {
           }
         }
       });
+
       if (filterData.length === 0) {
         setProductData([]);
         setDataPresent(true);
@@ -160,8 +158,8 @@ const ListGoods = ({ products, catSlug }: Props) => {
     <>
       <div className="mt-3">
         <MenuGoods
-          brewing={brewing}
-          merch={merch}
+          brewing={brewingValues}
+          merch={merchValues}
           selectedBrewing={selectedBrewing}
           selectedMerch={selectedMerch}
           handleBrewChange={handleBrewChange}

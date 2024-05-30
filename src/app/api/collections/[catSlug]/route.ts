@@ -1,14 +1,35 @@
+import { Products } from "@/data";
+
 import prisma from "@/lib/db/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
-  const products = await prisma.product.findMany({
-    include: {
-      variants: true,
-    },
-  });
+export async function GET(
+  req: Request,
+  { params }: { params: { catSlug: string } }
+) {
+  const { catSlug } = params;
 
-  return new NextResponse(JSON.stringify(products));
+  if (catSlug === "all-coffee") {
+    const productCategory = await prisma.product.findMany({
+      where: {
+        catSlug: "coffee",
+      },
+      include: {
+        variants: true,
+      },
+    });
+    return new NextResponse(JSON.stringify(productCategory));
+  } else if (catSlug === "goods") {
+    const productCategory = await prisma.product.findMany({
+      where: {
+        catSlug: "goods",
+      },
+      include: {
+        variants: true,
+      },
+    });
+    return new NextResponse(JSON.stringify(productCategory));
+  }
 }
 
 export async function POST(req: NextRequest, res: NextResponse) {

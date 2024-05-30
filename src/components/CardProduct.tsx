@@ -1,6 +1,6 @@
 "use client";
 
-import { CoffeeType, ProductType } from "@/app/types/types";
+import { ProductType } from "@/app/types/types";
 import { formatPrice } from "@/lib/format";
 
 import Image from "next/image";
@@ -41,11 +41,15 @@ export default function CardProduct({ product }: Props) {
             {product.title}
           </h5>
         </Link>
-        <div className="flex gap-5">
-          <span className="text-xs  font-semibold uppercase lg:text-sm">
-            {product.variants.ingredient?.join(" · ")}
-          </span>
-        </div>
+        {!product.variants.ingredient && (
+          <div className="flex gap-5">
+            <span className="text-xs  font-semibold uppercase lg:text-sm">
+              {product.variants.map((variant: any) =>
+                variant.ingredient?.join(" · ")
+              )}
+            </span>
+          </div>
+        )}
         <span className="text-base font-medium lg:text-sm">
           {formatPrice(product.price)}
         </span>

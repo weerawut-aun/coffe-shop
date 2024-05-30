@@ -1,47 +1,37 @@
-import { CoffeeType, ProductType } from "@/app/types/types";
 import AddButton from "@/components/AddButton";
 
 import ListProduct from "@/components/ui/product/ListProduct";
 import ListGoods from "@/components/ui/product/ListGoods";
 import { Products } from "@/data";
+import { ProductType } from "@/app/types/types";
 
 type Props = {
   params: { category: string };
 };
 
-// const getCategory = async () => {
-//   try {
-//     const res = await fetch("http://localhost:3000/api/categories", {
-//       method: "GET",
-//       cache: "no-store",
-//     });
-
-//     if (!res.ok) {
-//       throw new Error("Faild!");
-//     }
-//     return res.json();
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-
-// const getProduct = async (category: string) => {
-//   try {
-//     const res = await fetch(
-//       `http://localhost:3000/api/products?cat=${category}`,
-//       {
-//         method: "GET",
-//         cache: "no-store",
-//       }
-//     );
-//     if (!res.ok) {
-//       throw new Error("Faild!");
-//     }
-//     return res.json();
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+const getProduct = async (catSlug: string) => {
+  try {
+    // const res = await fetch(
+    //   `http://localhost:3000/api/products?cat=${category}`,
+    //   {
+    //     method: "GET",
+    //     cache: "no-store",
+    //   }
+    const res = await fetch(
+      `http://localhost:3000/api/collections/${catSlug}`,
+      {
+        method: "GET",
+        cache: "no-store",
+      }
+    );
+    if (!res.ok) {
+      throw new Error("Faild!");
+    }
+    return res.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 export async function generateMetadata({ params: { category } }: Props) {
   return {
@@ -50,20 +40,7 @@ export async function generateMetadata({ params: { category } }: Props) {
 }
 
 const CategoryPage = async ({ params }: Props) => {
-  const products = Products;
-
-  const getCategory = (products: any[], catSlug: string) => {
-    const productSlug = products.filter(
-      (product) => product.catSlug === catSlug
-    );
-    if (productSlug) {
-      return productSlug;
-    }
-    return [];
-  };
-
-  const coffee = getCategory(products, "coffee");
-  const goods = getCategory(products, "goods");
+  const products: ProductType[] = await getProduct(params.category);
 
   const catSlug = params.category;
 
@@ -80,9 +57,9 @@ const CategoryPage = async ({ params }: Props) => {
 
         <div className="w-full">
           {catSlug === "all-coffee" ? (
-            <ListProduct products={coffee} catSlug={catSlug} />
+            <ListProduct products={products} />
           ) : (
-            <ListGoods products={goods} catSlug={catSlug} />
+            <ListGoods products={products} />
           )}
         </div>
       </div>
